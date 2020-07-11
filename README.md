@@ -1,1 +1,0 @@
-### Dhiraj Patra - Technical Architect - Profile
