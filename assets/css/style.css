@@ -1146,9 +1146,13 @@ section .container {
 
 .credit {
   text-align: center;
-  font-size: small;
+  font-size: medium;
   padding: 20px;
   float: right;
+}
+
+.credit span {
+  margin: 0 20px 0 20px;
 }
 
 hr {
