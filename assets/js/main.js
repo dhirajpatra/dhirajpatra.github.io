@@ -1,12 +1,14 @@
-
 !(function ($) {
   "use strict";
 
+  const repoName = "/your-repo-name"; // Replace 'your-repo-name' with your GitHub repository name
+
   // Nav Menu
   $(document).on('click', '.nav-menu a, .mobile-nav a', function (e) {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-      var hash = this.hash;
-      var target = $(hash);
+    const pathname = location.pathname.replace(/^\//, '').replace(repoName + "/", "");
+    if (pathname === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+      const hash = this.hash;
+      const target = $(hash);
       if (target.length) {
         e.preventDefault();
 
@@ -15,7 +17,7 @@
           $(this).closest('li').addClass('active');
         }
 
-        if (hash == '#header') {
+        if (hash === '#header') {
           $('#header').removeClass('header-top');
           $("section").removeClass('section-show');
           return;
@@ -26,7 +28,6 @@
           setTimeout(function () {
             $("section").removeClass('section-show');
             $(hash).addClass('section-show');
-
           }, 350);
         } else {
           $("section").removeClass('section-show');
@@ -44,18 +45,20 @@
         }
 
         return false;
-
       }
     }
   });
 
   // Activate/show sections on load with hash links
   if (window.location.hash) {
-    var initial_nav = window.location.hash;
+    const initial_nav = window.location.hash;
     if ($(initial_nav).length) {
       $('#header').addClass('header-top');
       $('.nav-menu .active, .mobile-nav .active').removeClass('active');
-      $('.nav-menu, .mobile-nav').find('a[href="' + initial_nav + '"]').parent('li').addClass('active');
+      $('.nav-menu, .mobile-nav')
+        .find('a[href="' + initial_nav + '"]')
+        .parent('li')
+        .addClass('active');
       setTimeout(function () {
         $("section").removeClass('section-show');
         $(initial_nav).addClass('section-show');
@@ -65,21 +68,23 @@
 
   // Mobile Navigation
   if ($('.nav-menu').length) {
-    var $mobile_nav = $('.nav-menu').clone().prop({
-      class: 'mobile-nav d-lg-none'
+    const $mobile_nav = $('.nav-menu').clone().prop({
+      class: 'mobile-nav d-lg-none',
     });
     $('body').append($mobile_nav);
-    $('body').prepend('<button type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>');
+    $('body').prepend(
+      '<button type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>'
+    );
     $('body').append('<div class="mobile-nav-overly"></div>');
 
-    $(document).on('click', '.mobile-nav-toggle', function (e) {
+    $(document).on('click', '.mobile-nav-toggle', function () {
       $('body').toggleClass('mobile-nav-active');
       $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
       $('.mobile-nav-overly').toggle();
     });
 
     $(document).click(function (e) {
-      var container = $(".mobile-nav, .mobile-nav-toggle");
+      const container = $('.mobile-nav, .mobile-nav-toggle');
       if (!container.is(e.target) && container.has(e.target).length === 0) {
         if ($('body').hasClass('mobile-nav-active')) {
           $('body').removeClass('mobile-nav-active');
@@ -88,85 +93,30 @@
         }
       }
     });
-  } else if ($(".mobile-nav, .mobile-nav-toggle").length) {
-    $(".mobile-nav, .mobile-nav-toggle").hide();
+  } else if ($('.mobile-nav, .mobile-nav-toggle').length) {
+    $('.mobile-nav, .mobile-nav-toggle').hide();
   }
 
-  // jQuery counterUp
-  $('[data-toggle="counter-up"]').counterUp({
-    delay: 10,
-    time: 1000
-  });
-
-  // Skills section
-  $('.skills-content').waypoint(function () {
-    $('.progress .progress-bar').each(function () {
-      $(this).css("width", $(this).attr("aria-valuenow") + '%');
-    });
-  }, {
-    offset: '80%'
-  });
-
-  // Testimonials carousel (uses the Owl Carousel library)
-  $(".testimonials-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    responsive: {
-      0: {
-        items: 1
-      },
-      768: {
-        items: 2
-      },
-      900: {
-        items: 3
-      }
-    }
-  });
-
-  // Porfolio isotope and filter
+  // Adjust Portfolio Links for GitHub Pages
   $(window).on('load', function () {
-    // calculate and load the age
-    // var dob = new Date('1974-06-07');
-    // var today = new Date();
-    // var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
-    // $('#age').html(age);
-
-    var start = new Date('1997-09-01');
-    var today = new Date();
-    var exp = Math.floor((today - start) / (365.25 * 24 * 60 * 60 * 1000));
-    $('#exp').html(exp + ' years');
-
-    var portfolioIsotope = $('.portfolio-container').isotope({
+    const portfolioIsotope = $('.portfolio-container').isotope({
       itemSelector: '.portfolio-item',
-      layoutMode: 'fitRows'
+      layoutMode: 'fitRows',
     });
 
     $('#portfolio-flters li').on('click', function () {
-      $("#portfolio-flters li").removeClass('filter-active');
+      $('#portfolio-flters li').removeClass('filter-active');
       $(this).addClass('filter-active');
 
       portfolioIsotope.isotope({
-        filter: $(this).data('filter')
+        filter: $(this).data('filter'),
       });
     });
 
+    // Update experience dynamically
+    const start = new Date('1997-09-01');
+    const today = new Date();
+    const exp = Math.floor((today - start) / (365.25 * 24 * 60 * 60 * 1000));
+    $('#exp').html(exp + ' years');
   });
-
-  // Initiate venobox (lightbox feature used in portofilo)
-  $(document).ready(function () {
-    $('.venobox').venobox({
-      'share': false
-    });
-  });
-
-  // Portfolio details carousel
-  $(".portfolio-details-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    items: 1
-  });
-
 })(jQuery);
