@@ -10970,3 +10970,5 @@ section.resume-section .resume-section-content {
     padding-bottom: 5rem;
   }
 }
+
+.hp-field { display: none; } /* Hide honeypot from humans */

@@ -13,7 +13,9 @@
         <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <!-- Core theme CSS (includes Bootstrap)-->
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome for icons (optional) -->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
@@ -125,7 +127,7 @@
             <!-- Experience-->
             <section class="resume-section" id="experience">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Experience</h2>
+                    <h2 class="mb-5"> Experience </h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Senior Project Manager</h3>
@@ -278,7 +280,7 @@
             <!-- Education-->
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Education</h2>
+                    <h2 class="mb-5"> Education </h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Indira Gandhi National Open University</h3>
@@ -330,7 +332,7 @@
             <!-- Skills-->
             <section class="resume-section" id="skills">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Skills</h2>
+                    <h2 class="mb-5"> Skills </h2>
                     <div class="subheading mb-3">Technologies</div>
                     <ul class="list-inline">
                         <li class="list-inline-item">Python</li>
@@ -345,7 +347,7 @@
                         <li class="list-inline-item">LLM & Small Language Model with Ollama for local copilot</li>
                         <li class="list-inline-item">Project Management & Mentoring</li>
                     </ul>
-                    <div class="subheading mb-3">Expertise</div>
+                    <div class="subheading mb-3"> Expertise </div>
                     <ul class="fa-ul mb-0">
                         <li>
                             <span class="fa-li"><i class="fas fa-check"></i></span>
@@ -370,7 +372,7 @@
             <!-- Interests-->
             <section class="resume-section" id="interests">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Interests</h2>
+                    <h2 class="mb-5"> Interests </h2>
                     <p>With a keen interest in Robotics, IoT, and AI, I explore the endless possibilities of integrating these technologies to create intelligent systems that can learn, adapt, and interact with their environment. My fascination with GenAI has led me to delve into the latest advancements in generative models and their applications in various industries 4.0 and 5.0.</p>
                 </div>
             </section>
@@ -378,7 +380,7 @@
             <!-- Awards-->
             <section class="resume-section" id="awards">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Awards & Certifications</h2>
+                    <h2 class="mb-5"> Awards & Certifications </h2>
                     <ul class="fa-ul mb-0">
                         <li>
                             <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
@@ -403,7 +405,7 @@
         <!-- Recommendation -->
         <section class="resume-section" id="recommendation">
             <div class="resume-section-content">
-                <h2 class="mb-5">Recommendations</h2>
+                <h2 class="mb-5"> Recommendations </h2>
                 <ul class="fa-ul mb-0">
                     <li>
                         <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
@@ -415,81 +417,115 @@
         <!-- Contact-->
          <section class="contact-section" id="contact">
             <div class="resume-section-content">
-                <h2 class="mb-5">Contact Me</h2>
+                <h2 class="mb-5"> Contact Me </h2>
                 <p>
-                    <h1>Contact Us</h1>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name*</label>
-                            <input type="text" id="name" required>
+                    <div class="container py-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 col-lg-6">
+                                <div class="card shadow-sm">
+                                    <div class="card-body p-4">
+                                        
+                                        <!-- Form -->
+                                        <form id="contactForm" novalidate>
+                                            <!-- Honeypot Field (Hidden from users) -->
+                                            <div class="mb-3 hp-field">
+                                                <label for="website" class="form-label">Website</label>
+                                                <input type="text" class="form-control" id="website">
+                                            </div>
+                
+                                            <!-- Name -->
+                                            <div class="mb-3">
+                                                <label for="name" class="form-label">
+                                                    <i class="fas fa-user me-1"></i> Name *
+                                                </label>
+                                                <input type="text" class="form-control" id="name" required>
+                                            </div>
+                
+                                            <!-- Email -->
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">
+                                                    <i class="fas fa-at me-1"></i> Email *
+                                                </label>
+                                                <input type="email" class="form-control" id="email" required>
+                                            </div>
+                
+                                            <!-- Message -->
+                                            <div class="mb-3">
+                                                <label for="message" class="form-label">
+                                                    <i class="fas fa-comment me-1"></i> Message *
+                                                </label>
+                                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                                            </div>
+                
+                                            <!-- Submit Button -->
+                                            <div class="d-grid">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fas fa-paper-plane me-2"></i> Send Message
+                                                </button>
+                                            </div>
+                
+                                            <!-- Alerts -->
+                                            <div id="errorAlert" class="alert alert-danger mt-3 d-none"></div>
+                                            <div id="successAlert" class="alert alert-success mt-3 d-none">
+                                                Message sent successfully!
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email*</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <!-- Honeypot field (hidden trap for bots) -->
-                        <div class="form-group hp-field">
-                            <label for="website">Website</label>
-                            <input type="text" id="website">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message*</label>
-                            <textarea id="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit">Submit</button>
-                        <div id="errorMsg" class="error"></div>
-                        <div id="successMsg" class="success"></div>
-                    </form>
+                    </div>
                 
                     <script>
                         document.getElementById('contactForm').addEventListener('submit', function(e) {
                             e.preventDefault();
                             
-                            // Clear previous messages
-                            document.getElementById('errorMsg').textContent = '';
-                            document.getElementById('successMsg').textContent = '';
+                            // Hide alerts
+                            document.getElementById('errorAlert').classList.add('d-none');
+                            document.getElementById('successAlert').classList.add('d-none');
                             
-                            // Get form values
+                            // Get values
                             const name = document.getElementById('name').value.trim();
                             const email = document.getElementById('email').value.trim();
                             const message = document.getElementById('message').value.trim();
                             const honeypot = document.getElementById('website').value.trim();
                             
-                            // Spam keywords to check
+                            // Spam keywords (customize as needed)
                             const spamKeywords = [
-                                'viagra', 'casino', 'loan', 'click here', 'make money', 
-                                'work from home', 'free offer', 'credit card'
+                                'viagra', 'casino', 'loan', 'click here', 
+                                'make money', 'credit score', 'http://', 'https://'
                             ];
                             
-                            // 1. Honeypot check (bots fill hidden fields)
+                            // 1. Honeypot check
                             if (honeypot !== '') {
-                                document.getElementById('errorMsg').textContent = 'Spam detected!';
+                                showError('Spam detected!');
                                 return;
                             }
                             
-                            // 2. Spam keyword check in message
-                            const isSpam = spamKeywords.some(keyword => 
-                                message.toLowerCase().includes(keyword)
-                            );
-                            
-                            if (isSpam) {
-                                document.getElementById('errorMsg').textContent = 'Message contains suspicious content.';
+                            // 2. Spam keyword check
+                            const lowerMsg = message.toLowerCase();
+                            if (spamKeywords.some(keyword => lowerMsg.includes(keyword))) {
+                                showError('Message contains suspicious content.');
                                 return;
                             }
                             
-                            // 3. Basic validation
+                            // 3. Validation
                             if (!name || !email || !message) {
-                                document.getElementById('errorMsg').textContent = 'All fields are required!';
+                                showError('All fields are required!');
                                 return;
                             }
                             
-                            // If all checks pass
-                            document.getElementById('successMsg').textContent = 'Message sent successfully!';
-                            console.log('Form data:', { name, email, message }); // Replace with actual submission (e.g., fetch API)
-                            
-                            // Reset form
+                            // Success (replace with actual AJAX/fetch call)
+                            document.getElementById('successAlert').classList.remove('d-none');
+                            console.log('Submitting:', { name, email, message });
                             this.reset();
                         });
+                        
+                        function showError(msg) {
+                            const errorAlert = document.getElementById('errorAlert');
+                            errorAlert.textContent = msg;
+                            errorAlert.classList.remove('d-none');
+                        }
                     </script>
                 </p>
             </div>
