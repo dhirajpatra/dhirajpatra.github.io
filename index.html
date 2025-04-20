@@ -64,11 +64,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">
-                            <i class="fas fa-envelope mr-2"></i>Contact Me
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#blo">
                             <i class="fas fa-blogger mr-2"></i>Blog
                         </a>
@@ -419,121 +414,6 @@
                 </ul>
             </div>
         </section>
-        <!-- Contact-->
-         <section class="contact-section" id="contact">
-            <div class="contact-section-content">
-                <h2 class="mb-5"> Contact Me </h2>
-                <p>
-                    <div class="container py-5">
-                        <div class="row justify-content-center">
-                            <div class="col-md-8 col-lg-6">
-                                <div class="card shadow-sm">
-                                    <div class="card-body p-4">
-                                        
-                                        <!-- Form -->
-                                        <form id="contactForm" novalidate>
-                                            <!-- Honeypot Field (Hidden from users) -->
-                                            <div class="mb-3 hp-field">
-                                                <label for="website" class="form-label">Website</label>
-                                                <input type="text" class="form-control" id="website">
-                                            </div>
-                
-                                            <!-- Name -->
-                                            <div class="mb-3">
-                                                <label for="name" class="form-label">
-                                                    <i class="fas fa-user me-1"></i> Name *
-                                                </label>
-                                                <input type="text" class="form-control" id="name" required>
-                                            </div>
-                
-                                            <!-- Email -->
-                                            <div class="mb-3">
-                                                <label for="email" class="form-label">
-                                                    <i class="fas fa-at me-1"></i> Email *
-                                                </label>
-                                                <input type="email" class="form-control" id="email" required>
-                                            </div>
-                
-                                            <!-- Message -->
-                                            <div class="mb-3">
-                                                <label for="message" class="form-label">
-                                                    <i class="fas fa-comment me-1"></i> Message *
-                                                </label>
-                                                <textarea class="form-control" id="message" rows="5" required></textarea>
-                                            </div>
-                
-                                            <!-- Submit Button -->
-                                            <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary">
-                                                    <i class="fas fa-paper-plane me-2"></i> Send Message
-                                                </button>
-                                            </div>
-                
-                                            <!-- Alerts -->
-                                            <div id="errorAlert" class="alert alert-danger mt-3 d-none"></div>
-                                            <div id="successAlert" class="alert alert-success mt-3 d-none">
-                                                Message sent successfully!
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <script>
-                        document.getElementById('contactForm').addEventListener('submit', function(e) {
-                            e.preventDefault();
-                            
-                            // Hide alerts
-                            document.getElementById('errorAlert').classList.add('d-none');
-                            document.getElementById('successAlert').classList.add('d-none');
-                            
-                            // Get values
-                            const name = document.getElementById('name').value.trim();
-                            const email = document.getElementById('email').value.trim();
-                            const message = document.getElementById('message').value.trim();
-                            const honeypot = document.getElementById('website').value.trim();
-                            
-                            // Spam keywords (customize as needed)
-                            const spamKeywords = [
-                                'viagra', 'casino', 'loan', 'click here', 
-                                'make money', 'credit score', 'http://', 'https://'
-                            ];
-                            
-                            // 1. Honeypot check
-                            if (honeypot !== '') {
-                                showError('Spam detected!');
-                                return;
-                            }
-                            
-                            // 2. Spam keyword check
-                            const lowerMsg = message.toLowerCase();
-                            if (spamKeywords.some(keyword => lowerMsg.includes(keyword))) {
-                                showError('Message contains suspicious content.');
-                                return;
-                            }
-                            
-                            // 3. Validation
-                            if (!name || !email || !message) {
-                                showError('All fields are required!');
-                                return;
-                            }
-                            
-                            // Success (replace with actual AJAX/fetch call)
-                            document.getElementById('successAlert').classList.remove('d-none');
-                            console.log('Submitting:', { name, email, message });
-                            this.reset();
-                        });
-                        
-                        function showError(msg) {
-                            const errorAlert = document.getElementById('errorAlert');
-                            errorAlert.textContent = msg;
-                            errorAlert.classList.remove('d-none');
-                        }
-                    </script>
-                </p>
-            </div>
 
             <!-- Blog -->
             <section class="resume-section" id="recommendation">
