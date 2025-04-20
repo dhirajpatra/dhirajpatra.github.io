@@ -12,6 +12,7 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
@@ -25,13 +26,46 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards & Certificates</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#recommendation">Recommendation</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">
+                            <i class="fas fa-user mr-2"></i>About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#experience">
+                            <i class="fas fa-briefcase mr-2"></i>Experience
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#education">
+                            <i class="fas fa-graduation-cap mr-2"></i>Education
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#skills">
+                            <i class="fas fa-code mr-2"></i>Skills
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#interests">
+                            <i class="fas fa-heart mr-2"></i>Interests
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#awards">
+                            <i class="fas fa-trophy mr-2"></i>Awards & Certificates
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#recommendation">
+                            <i class="fas fa-quote-left mr-2"></i>Recommendation
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">
+                            <i class="fas fa-envelope mr-2"></i>Contact Me
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -376,6 +410,88 @@
                         <a href="https://www.linkedin.com/in/dhirajpatra/details/recommendations/?detailScreenTabIndex=0" target="_blank">linkedin recommendation section</a>
                     </li>
                 </ul>
+            </div>
+        </section>
+        <!-- Contact-->
+         <section class="contact-section" id="contact">
+            <div class="resume-section-content">
+                <h2 class="mb-5">Contact Me</h2>
+                <p>
+                    <h1>Contact Us</h1>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name*</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <!-- Honeypot field (hidden trap for bots) -->
+                        <div class="form-group hp-field">
+                            <label for="website">Website</label>
+                            <input type="text" id="website">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message*</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit">Submit</button>
+                        <div id="errorMsg" class="error"></div>
+                        <div id="successMsg" class="success"></div>
+                    </form>
+                
+                    <script>
+                        document.getElementById('contactForm').addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            
+                            // Clear previous messages
+                            document.getElementById('errorMsg').textContent = '';
+                            document.getElementById('successMsg').textContent = '';
+                            
+                            // Get form values
+                            const name = document.getElementById('name').value.trim();
+                            const email = document.getElementById('email').value.trim();
+                            const message = document.getElementById('message').value.trim();
+                            const honeypot = document.getElementById('website').value.trim();
+                            
+                            // Spam keywords to check
+                            const spamKeywords = [
+                                'viagra', 'casino', 'loan', 'click here', 'make money', 
+                                'work from home', 'free offer', 'credit card'
+                            ];
+                            
+                            // 1. Honeypot check (bots fill hidden fields)
+                            if (honeypot !== '') {
+                                document.getElementById('errorMsg').textContent = 'Spam detected!';
+                                return;
+                            }
+                            
+                            // 2. Spam keyword check in message
+                            const isSpam = spamKeywords.some(keyword => 
+                                message.toLowerCase().includes(keyword)
+                            );
+                            
+                            if (isSpam) {
+                                document.getElementById('errorMsg').textContent = 'Message contains suspicious content.';
+                                return;
+                            }
+                            
+                            // 3. Basic validation
+                            if (!name || !email || !message) {
+                                document.getElementById('errorMsg').textContent = 'All fields are required!';
+                                return;
+                            }
+                            
+                            // If all checks pass
+                            document.getElementById('successMsg').textContent = 'Message sent successfully!';
+                            console.log('Form data:', { name, email, message }); // Replace with actual submission (e.g., fetch API)
+                            
+                            // Reset form
+                            this.reset();
+                        });
+                    </script>
+                </p>
             </div>
         </section>
     </div>
