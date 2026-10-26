@@ -1,0 +1,23 @@
+Package: pwdx-cli
+Architecture: amd64
+Version: 0.1.0-1
+Priority: optional
+Section: utils
+Maintainer: Dhiraj Patra dhiraj.patra@gmail.com
+Installed-Size: 1832
+Depends: libc6 (>= 2.34), libgcc-s1
+Filename: ./pwdx-cli_0.1.0-1_amd64.deb
+Size: 690908
+MD5sum: 7adccd5ddfe113e7fe1797d1acb35562
+SHA1: 34a6237391f9065f8fa7170cffae3271ce8ef3fe
+SHA256: 71321c88045f8b480a208886560e1cfddf92252fe95e1d5458e7fb57b302dfb3
+SHA512: 14d50db8ce22c6bf95daafefbcbfa8e84c212541e985cac4f29531a44f3bc43cf1abea8a225107868676cf52ddde90499cf0c89734bf1feba0da5810b7b9dcb2
+Homepage: https://github.com/dhirajpatra
+Description: stateless, offline password derivation
+ Turns one memorable password into a different, long, random-looking password
+ for every site. The same inputs always give the same result on every device.
+ Nothing is stored or sent anywhere; a secret key file that you control is
+ mixed into every derivation (Argon2id, HMAC-SHA512, HKDF).
+ .
+ The installed command is called pwdx-cli. Released under the MIT License.
+

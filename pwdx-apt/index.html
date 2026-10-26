@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pwdx apt repository</title>
+<style>body{font:16px/1.5 system-ui,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem}pre{background:#f4f4f4;padding:1rem;overflow:auto;border-radius:6px}code{font-family:ui-monospace,monospace}@media(prefers-color-scheme:dark){body{background:#111;color:#ddd}pre{background:#222}}</style>
+</head><body>
+<h1>pwdx apt repository</h1>
+<p>Stateless, offline password derivation. Debian and Ubuntu (22.04 or newer). Current version: <b>0.1.0-1</b>.</p>
+<h2>Install</h2>
+<pre><code>sudo install -d -m 0755 /usr/share/keyrings
+curl -fsSL https://dhirajpatra.github.io/pwdx-apt/pwdx-archive-keyring.gpg | sudo tee /usr/share/keyrings/pwdx-archive-keyring.gpg &gt;/dev/null
+echo "deb [signed-by=/usr/share/keyrings/pwdx-archive-keyring.gpg] https://dhirajpatra.github.io/pwdx-apt ./" | sudo tee /etc/apt/sources.list.d/pwdx.list
+sudo apt update
+sudo apt install pwdx-cli</code></pre>
+<p>Then run <code>pwdx-cli selftest</code>. Updates arrive through <code>sudo apt update &amp;&amp; sudo apt upgrade</code>.</p>
+<h2>Verify the signing key</h2>
+<p>Fingerprint: <code>3D93F64918CBBD3B580A4418D52F43A7C1D85283</code></p>
+<pre><code>gpg --show-keys --fingerprint /usr/share/keyrings/pwdx-archive-keyring.gpg</code></pre>
+<p>Compare it with the fingerprint published in the project README.</p>
+</body></html>

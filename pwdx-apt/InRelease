@@ -1,0 +1,30 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Date: Mon, 26 Oct 2026 04:26:33 +0000
+Description: pwdx apt repository
+Label: pwdx
+Origin: pwdx
+MD5Sum:
+ 64852412d0b634e708c55d98b28f4988             1007 Packages
+ b2ff8c479fba1131c86e14cb45464c8c              698 Packages.gz
+ 74ea4774859e5033367b3bb405dd7d99               96 Release
+SHA1:
+ 4837eb7c55c6ec457844e723fc9604f777e99a0f             1007 Packages
+ 9218e73e7a6d2fb7b9138f07135af48eb4abd02b              698 Packages.gz
+ 8ea4b15712714f1bd39378626640c9a4f5d62b0d               96 Release
+SHA256:
+ bbf89b45da67f9e9fed2a3772a2d6511af4caa756f97b2110437a21d572bf08b             1007 Packages
+ 52f907cc28694c7cdd6f7bc95b9d3ec3ab03bb2e901f9d8771405cadd2476306              698 Packages.gz
+ fb83066f6400f46d48defb8937a526a3e14ba28b789ff7e0e63325164f063053               96 Release
+SHA512:
+ 2ecde761aa9f5c97c2544a12b2e607fef2be15bf48ba5668e09bc40b46f2be421f42129b93820f0c28a53dd02eb03e6546aa3691b5bf4966c40d5884cd3e2ab8             1007 Packages
+ c240fb6a73f1ae483082909a7076e7d97ec3a6d8e4732424254d9964d0d1774c07d092656b138f74a632ca1bd7b45a3204d8d6bd6607a762efae85a7ab491576              698 Packages.gz
+ 5a0da5e465e558afe860e10d59b3e316a74cdb50880739f486e85aae7f1eac0adb19053af98c62745c4a1a161a5f9b2fcdf01d9520dba50575219781a8cc5879               96 Release
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQQ9k/ZJGMu9O1gKRBjVL0OnwdhSgwUCat7WeQAKCRDVL0OnwdhS
+g9x7AQDZ6B30gPeMjoH5nkkIiUsLuhDh6nnlwueh6uV6jRLJ9AEAikQZXxDTFSVi
+VxuhVdXqMVgopzaEpMm1+T+SpjEfkw4=
+=53B0
+-----END PGP SIGNATURE-----
