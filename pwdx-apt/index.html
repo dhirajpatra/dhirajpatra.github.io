@@ -5,6 +5,8 @@
 </head><body>
 <h1>pwdx apt repository</h1>
 <p>Stateless, offline password derivation. Debian and Ubuntu (22.04 or newer). Current version: <b>0.1.0-1</b>.</p>
+<p><img src="apt-ubuntu-installing.png"></p>
+<br>
 <h2>Install</h2>
 <pre><code>sudo install -d -m 0755 /usr/share/keyrings
 curl -fsSL https://dhirajpatra.github.io/pwdx-apt/pwdx-archive-keyring.gpg | sudo tee /usr/share/keyrings/pwdx-archive-keyring.gpg &gt;/dev/null
@@ -16,4 +18,6 @@ sudo apt install pwdx-cli</code></pre>
 <p>Fingerprint: <code>3D93F64918CBBD3B580A4418D52F43A7C1D85283</code></p>
 <pre><code>gpg --show-keys --fingerprint /usr/share/keyrings/pwdx-archive-keyring.gpg</code></pre>
 <p>Compare it with the fingerprint published in the project README.</p>
+<br>
+<p><a href="https://github.com/dhirajpatra/Deterministic-Password-Derivation-with-Pvt-Key">Repository</a></p>
 </body></html>
