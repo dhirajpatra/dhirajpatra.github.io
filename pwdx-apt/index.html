@@ -22,6 +22,7 @@ sudo apt install pwdx-cli</code></pre>
 <p>Compare it with the fingerprint published in the project README.</p>
 <br>
 <h2>How to Use</h2>
+  <h3>Linux</h3>
   <div id="content">
 <p>Use <code>pwdx-cli get</code>. Since you installed it with apt, the command is <code>pwdx-cli</code>, not <code>pwdx</code>.</p>
 
@@ -65,7 +66,45 @@ pwdx-cli get github.com --user you@example.com --counter 2            # new pass
 <p><strong>Switching an existing account to a pwdx password:</strong> log in to the site as usual, go to its change-password page, and use the new password from the command above. Keep the old one until the site confirms the change.</p>
 
 <p>If you get stuck, send me the exact error and what you typed (not your passwords).</p>
+  </div>
 
+  <h3>Windows</h3>
+  <div>
+<p>Both pieces are installed. I'm cross-building the Windows <code>.exe</code> now.</p>
+<p>The Windows <code>.exe</code> builds (1.7 MB). To test that it actually runs, I'm installing Wine (a Windows compatibility layer) in the background.</p>
+<p>The Windows build runs under Wine and passes its self-test. Now the full flow, with the SSH-key import and password derivation, checked against the independent Python reference.</p>
+<p>Yes, the command-line tool works on Windows. I built a Windows version, <code>pwdx-0.1.0-windows-x86_64.zip</code>, which has not run on a real Windows computer yet. I ran it under Wine, a Windows-compatibility layer on Linux, where it passed:</p>
+<ul>
+<li><strong>Self-test:</strong> it printed <code>selftest ok (spec v1)</code>.</li>
+<li><strong>SSH key import and derivation:</strong> I imported a real OpenSSH key and derived a password. It exactly matched the independent Python check.</li>
+<li><strong>Wrong passphrase:</strong> a wrong key-file passphrase was rejected.</li>
+<li><strong>Cross-platform key file:</strong> a key file made by the Linux build opened on the Windows build and gave the same Key ID.</li>
+</ul>
+<p>Not tested:</p>
+<ul>
+<li><strong>Real Windows 10 or 11:</strong> in particular the hidden password prompt in PowerShell or Command Prompt. My tests fed the passwords in through <code>--stdin</code>.</li>
+<li><strong>ARM Windows:</strong> it is an Intel/AMD 64-bit build.</li>
+</ul>
+<p><strong>How to use it on Windows:</strong></p>
+<ol>
+<li>Unzip the file anywhere, for example <code>C:\Tools\pwdx</code>. There is no installer.</li>
+<li>Open PowerShell in that folder and run <code>.\pwdx.exe selftest</code>, then <code>.\pwdx.exe key new</code>.</li>
+<li>Get a password with <code>.\pwdx.exe get github.com --user you@example.com</code>. Add <code>| clip</code> at the end to copy it to the clipboard.</li>
+</ol>
+<p>The key file is saved at <code>%APPDATA%\pwdx\key.pwdxkey</code>, and it is the same format as on Linux. You can copy your Linux key file over and get the same passwords. A README with these steps is inside the zip, and I added a Windows section to <code>INSTALL.md</code>.</p>
+<p><strong>Windows warnings:</strong></p>
+<ul>
+<li><strong>SmartScreen:</strong> the program isn't code-signed, so SmartScreen may show "Windows protected your PC". Users choose More info, then Run anyway, but only if the SHA-256 checksum matches. I included the checksum file. A signing certificate removes the warning but costs money each year.</li>
+<li><strong>Antivirus:</strong> some antivirus programs flag unsigned command-line tools.</li>
+<li><strong>Windows Subsystem for Linux (WSL):</strong> Windows users can also install Ubuntu there and use your apt package, where the command is <code>pwdx-cli</code>. Its key file lives inside WSL.</li>
+</ul>
+<p><strong>Next steps:</strong></p>
+<ul>
+<li>Ask a friend with Windows to try the zip and tell you what happens.</li>
+<li>Put the zip and checksum on a GitHub Releases page so users can download them. I can write a release workflow that builds the Windows and Linux files automatically.</li>
+<li>Windows packaging via <code>winget</code> or an installer is worth doing after real-world testing.</li>
+</ul>
+<p>The project zip also has <code>scripts/build-windows-zip.sh</code>, which rebuilds the Windows zip on Linux. The Windows app version still depends on the Flutter app, which hasn't been built yet.</p>
     
   </div>
 <p><a href="https://github.com/dhirajpatra/Deterministic-Password-Derivation-with-Pvt-Key">Repository</a> <b>creator: Dhiraj Patra</b></p>
