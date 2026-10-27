@@ -3,8 +3,6 @@
 <title>pwdx apt repository</title>
 <style>body{font:16px/1.5 system-ui,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem}pre{background:#f4f4f4;padding:1rem;overflow:auto;border-radius:6px}code{font-family:ui-monospace,monospace}@media(prefers-color-scheme:dark){body{background:#111;color:#ddd}pre{background:#222}}</style>
 <meta charset="UTF-8">
-  <!-- Load Web Components Polyfill and the Zero-MD component -->
-  <script type="module" src="https://jsdelivr.net"></script>
 </head><body>
 <h1>pwdx apt repository</h1>
 <p>Stateless, offline password derivation. Debian and Ubuntu (22.04 or newer). Current version: <b>0.1.0-1</b>.</p>
@@ -24,59 +22,52 @@ sudo apt install pwdx-cli</code></pre>
 <p>Compare it with the fingerprint published in the project README.</p>
 <br>
 <h2>How to Use</h2>
-  <div id="content">Use `pwdx-cli get`. Since you installed it with apt, the command is `pwdx-cli`, not `pwdx`.
+  <div id="content">
+<p>Use <code>pwdx-cli get</code>. Since you installed it with apt, the command is <code>pwdx-cli</code>, not <code>pwdx</code>.</p>
 
-**Once, before your first site:** create your key. Skip this if you already did.
+<p><strong>Once, before your first site:</strong> create your key. Skip this if you already did.</p>
 
-```bash
-pwdx-cli key new
-```
+<pre><code>pwdx-cli key new</code></pre>
 
-It asks for a key-file passphrase (at least 12 characters). Then back up the file at `~/.config/pwdx/key.pwdxkey` somewhere safe. To use your existing SSH key instead, run `pwdx-cli key import-ssh ~/.ssh/id_ed25519`.
+<p>It asks for a key-file passphrase (at least 12 characters). Then back up the file at <code>~/.config/pwdx/key.pwdxkey</code> somewhere safe. To use your existing SSH key instead, run <code>pwdx-cli key import-ssh ~/.ssh/id_ed25519</code>.</p>
 
-**For each site:** run
+<p><strong>For each site:</strong> run</p>
 
-```bash
-pwdx-cli get github.com --user you@example.com
-```
+<pre><code>pwdx-cli get github.com --user you@example.com</code></pre>
 
-It asks for two things, and typing is hidden:
-1. `Key-file passphrase:` the one you chose when you created the key.
-2. `Memorable password:` the short password you remember.
+<p>It asks for two things, and typing is hidden:<br>
+1. <code>Key-file passphrase:</code> the one you chose when you created the key.<br>
+2. <code>Memorable password:</code> the short password you remember.</p>
 
-It then prints the password for that site. Paste it into the site's sign-up or change-password page. The next time you log in, run the same command with the same inputs, and you get the same password.
+<p>It then prints the password for that site. Paste it into the site's sign-up or change-password page. The next time you log in, run the same command with the same inputs, and you get the same password.</p>
 
-**What you can change:**
+<p><strong>What you can change:</strong></p>
 
-```bash
-pwdx-cli get github.com --user you@example.com --profile alnum        # letters and digits only
+<pre><code>pwdx-cli get github.com --user you@example.com --profile alnum        # letters and digits only
 pwdx-cli get github.com --user you@example.com --length 16            # shorter
-pwdx-cli get github.com --user you@example.com --counter 2            # new password after a forced change
-```
+pwdx-cli get github.com --user you@example.com --counter 2            # new password after a forced change</code></pre>
 
-**Copy to the clipboard instead of showing it** (Linux):
+<p><strong>Copy to the clipboard instead of showing it</strong> (Linux):</p>
 
-```bash
-pwdx-cli get github.com --user you@example.com | xclip -selection clipboard
-```
+<pre><code>pwdx-cli get github.com --user you@example.com | xclip -selection clipboard</code></pre>
 
-Install `xclip` with `sudo apt install xclip` if you don't have it. On Wayland, use `wl-copy` instead.
+<p>Install <code>xclip</code> with <code>sudo apt install xclip</code> if you don't have it. On Wayland, use <code>wl-copy</code> instead.</p>
 
-**Rules to remember:**
-- **Use the same inputs every time.** Site, username, counter, type and length must match what you used when you set the password. If you change any of them, you get a different password. Keep a note of any option you changed for a site, such as `--profile alnum`.
-- **Site spelling:** `github.com` and `https://www.github.com/login` count as the same site.
-- **No username on a site:** use a fixed placeholder such as `-` every time.
-- **Different memorable passwords:** if you type the memorable password differently, spaces and capitals included, you get a different password.
-- **Same results on every device:** copy your key file to your other devices.
+<p><strong>Rules to remember:</strong></p>
+<ul>
+    <li><strong>Use the same inputs every time.</strong> Site, username, counter, type and length must match what you used when you set the password. If you change any of them, you get a different password. Keep a note of any option you changed for a site, such as <code>--profile alnum</code>.</li>
+    <li><strong>Site spelling:</strong> <code>github.com</code> and <code>https://www.github.com/login</code> count as the same site.</li>
+    <li><strong>No username on a site:</strong> use a fixed placeholder such as <code>-</code> every time.</li>
+    <li><strong>Different memorable passwords:</strong> if you type the memorable password differently, spaces and capitals included, you get a different password.</li>
+    <li><strong>Same results on every device:</strong> copy your key file to your other devices.</li>
+</ul>
 
-**Switching an existing account to a pwdx password:** log in to the site as usual, go to its change-password page, and use the new password from the command above. Keep the old one until the site confirms the change.
+<p><strong>Switching an existing account to a pwdx password:</strong> log in to the site as usual, go to its change-password page, and use the new password from the command above. Keep the old one until the site confirms the change.</p>
 
-If you get stuck, send me the exact error and what you typed (not your passwords).</div>
-<p><a href="https://github.com/dhirajpatra/Deterministic-Password-Derivation-with-Pvt-Key">Repository</a> <b>creator: Dhiraj Patra</b></p>
-  <script>
-    const markdownText = "# Hello World\nThis is **dynamic** markdown inside HTML.";
+<p>If you get stuck, send me the exact error and what you typed (not your passwords).</p>
+
     
-    // Convert Markdown string to HTML and inject it into the div
-    document.getElementById('content').innerHTML = marked.parse(markdownText);
-  </script>
+  </div>
+<p><a href="https://github.com/dhirajpatra/Deterministic-Password-Derivation-with-Pvt-Key">Repository</a> <b>creator: Dhiraj Patra</b></p>
+  
 </body></html>
