@@ -54,6 +54,43 @@ pwdx-cli get github.com --user you@example.com --counter 2            # new pass
 
 <p>Install <code>xclip</code> with <code>sudo apt install xclip</code> if you don't have it. On Wayland, use <code>wl-copy</code> instead.</p>
 
+    <h3>Windows</h3>
+    <div>
+<p>On Windows there are three places to think about: the program, the key file and your backups.</p>
+<p><strong>1. The program folder</strong></p>
+<p>Put it somewhere permanent that you control, not Downloads or Desktop:</p>
+<pre><code class="language-powershell"># in PowerShell, from the folder where you downloaded the zip
+Expand-Archive .\pwdx-0.1.0-windows-x86_64.zip -DestinationPath C:\Tools
+Rename-Item C:\Tools\pwdx-0.1.0-windows-x86_64 pwdx
+</code></pre>
+<p>You now have <code>C:\Tools\pwdx\pwdx.exe</code> along with <code>LICENSE</code>, <code>NOTICE</code> and the README. Only <code>pwdx.exe</code> is needed to run it. Keep the other files next to it, because the license requires them. If you don't have rights to <code>C:\Tools</code>, use <code>C:\Users\&lt;you&gt;\Tools\pwdx</code> instead.</p>
+<p>To type <code>pwdx</code> from any folder, add that folder to your <code>PATH</code>. This works without admin rights:</p>
+<pre><code class="language-powershell">$u = [Environment]::GetEnvironmentVariable("Path","User")
+[Environment]::SetEnvironmentVariable("Path", "$u;C:\Tools\pwdx", "User")
+</code></pre>
+<p>Then close and reopen PowerShell. To upgrade later, replace <code>pwdx.exe</code> in that folder.</p>
+<p><strong>2. The key file</strong></p>
+<p>You don't choose its location unless you want to. <code>pwdx key new</code> saves it automatically at <code>%APPDATA%\pwdx\key.pwdxkey</code>, which is <code>C:\Users\&lt;you&gt;\AppData\Roaming\pwdx\key.pwdxkey</code>. The command prints the exact path when it creates the file. The <code>AppData</code> folder is hidden, so to open it in File Explorer, paste <code>%APPDATA%\pwdx</code> into the address bar.</p>
+<p>Two things to consider:</p>
+<ul>
+<li><strong>Roaming profile:</strong> on a work laptop with a roaming profile, this folder can be copied to a server. The key file is encrypted, but a personal computer or a folder you choose yourself may be safer.</li>
+<li><strong>Another location:</strong> to keep it somewhere else, for example on a USB drive, run:</li>
+</ul>
+<pre><code class="language-powershell">setx PWDX_KEY_FILE "D:\secure\key.pwdxkey"
+</code></pre>
+<p>After this, reopen PowerShell and use that path. Or add <code>--key D:\secure\key.pwdxkey</code> to each command. pwdx never overwrites an existing key file.</p>
+<p><strong>3. Backups</strong></p>
+<p>Copy <code>key.pwdxkey</code> to at least two safe places, such as a USB stick kept somewhere else, and a copy in a password manager or other private storage. Check each copy with <code>pwdx key id --key &lt;path&gt;</code>; the 8-character code must match.</p>
+<p>Never store these where someone could find them:</p>
+<ul>
+<li><strong>Memorable password:</strong> never write it down anywhere, and never save it in a file.</li>
+<li><strong>Key-file passphrase:</strong> never store it in the same place as the key file.</li>
+<li><strong>Derived passwords:</strong> never keep a list of them. pwdx can recreate them whenever you need one.</li>
+</ul>
+<p><strong>4. A private notes file</strong></p>
+<p>pwdx doesn't remember how you set up each site. Keep a private note with the site, your username, and any options you changed from the defaults, such as <code>github.com, me@example.com, --profile alnum --length 20, counter 2</code>. That note contains no passwords. Put it in a password manager or any private file, and don't put it in the pwdx program folder.</p>
+      
+    </div>
 <p><strong>Rules to remember:</strong></p>
 <ul>
     <li><strong>Use the same inputs every time.</strong> Site, username, counter, type and length must match what you used when you set the password. If you change any of them, you get a different password. Keep a note of any option you changed for a site, such as <code>--profile alnum</code>.</li>
